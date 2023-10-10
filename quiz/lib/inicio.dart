@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Inicio extends StatelessWidget {
   final void Function() iniciarQuiz;
@@ -26,33 +27,31 @@ class Inicio extends StatelessWidget {
           const SizedBox(
             height: 80,
           ),
-          const Text(
+          Text(
             "Asi se aprende Flutter, compare.",
-            style: TextStyle(
+            style: GoogleFonts.catamaran(
               color: Colors.white,
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(
             height: 30,
           ),
-          OutlinedButton.icon(
+          ElevatedButton.icon(
             icon: const Icon(
               Icons.arrow_right_alt,
+              color: Colors.white,
             ),
             onPressed: iniciarQuiz,
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-              side: const BorderSide(
-                width: 2,
-                color: Color.fromARGB(10, 0, 0, 0),
-              ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 255, 102, 0),
             ),
-            label: const Text(
+            label: Text(
               "Empezar quiz",
-              style: TextStyle(
-                fontSize: 16,
+              style: GoogleFonts.catamaran(
+                color: Colors.white,
+                fontSize: 18,
               ),
             ),
           ),

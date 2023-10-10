@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/data/preguntas_respuestas.dart';
 import 'package:quiz/inicio.dart';
 import 'package:quiz/preguntas.dart';
+import 'package:quiz/resultados.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -12,22 +14,47 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizEstado extends State<Quiz> {
-  Widget? pantallaActiva;
+  List<String> respuestasElegidas = [];
+  var pantallaActiva = "inicio-pantalla";
 
   @override
   void initState() {
-    pantallaActiva = Inicio(cambiarPantalla);
+    pantallaActiva = "inicio-pantalla";
     super.initState();
   }
 
   void cambiarPantalla() {
     setState(() {
-      pantallaActiva = const Preguntas();
+      pantallaActiva = "preguntas-pantalla";
     });
+  }
+
+  void escogerRespuesta(String respuesta) {
+    respuestasElegidas.add(respuesta);
+
+    if (respuestasElegidas.length == preguntas.length) {
+      setState(() {
+        pantallaActiva = "resultados-pantalla";
+      });
+    }
   }
 
   @override
   Widget build(context) {
+    Widget pantallaWidget = Inicio(cambiarPantalla);
+
+    if (pantallaActiva == "preguntas-pantalla") {
+      pantallaWidget = Preguntas(
+        enEleccionRespuesta: escogerRespuesta,
+      );
+    }
+
+    if (pantallaActiva == "resultados-pantalla") {
+      pantallaWidget = Resultados(
+        respuestasEscogidas: respuestasElegidas,
+      );
+    }
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -41,7 +68,7 @@ class _QuizEstado extends State<Quiz> {
               ],
             ),
           ),
-          child: pantallaActiva,
+          child: pantallaWidget,
         ),
       ),
     );
