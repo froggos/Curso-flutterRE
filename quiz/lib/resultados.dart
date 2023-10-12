@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/data/preguntas_respuestas.dart';
 import 'package:quiz/resumen_preguntas.dart';
 
@@ -24,7 +25,11 @@ class Resultados extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numPreguntasTotales = 0;
+    final dataResumen = obtenerResumenDatos();
+    final numPreguntasTotales = preguntas.length;
+    final numPreguntasCorrectas = dataResumen.where((data) {
+      return data["respuesta_escogida"] == data["respuesta_correcta"];
+    }).length;
 
     return SizedBox(
       width: double.infinity,
@@ -33,11 +38,17 @@ class Resultados extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Haz respondido X de Y preguntas correctamente"),
+            Text(
+                "Haz respondido $numPreguntasCorrectas de $numPreguntasTotales preguntas correctamente",
+                style: GoogleFonts.catamaran(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 18,
+                )),
             const SizedBox(
               height: 30,
             ),
-            ResumenPreguntas(obtenerResumenDatos()),
+            ResumenPreguntas(dataResumen),
             const SizedBox(
               height: 30,
             ),
