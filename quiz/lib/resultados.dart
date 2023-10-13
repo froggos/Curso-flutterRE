@@ -52,9 +52,22 @@ class Resultados extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            TextButton(
+            TextButton.icon(
+              icon: const Icon(
+                Icons.refresh,
+                size: 22,
+                weight: 20,
+                color: Colors.white,
+              ),
               onPressed: () {},
-              child: const Text("Reiniciar quiz"),
+              label: Text(
+                "Reiniciar quiz",
+                style: GoogleFonts.catamaran(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
             )
           ],
         ),

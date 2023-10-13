@@ -40,16 +40,41 @@ class ResumenPreguntas extends StatelessWidget {
                 ),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(dato["pregunta"] as String),
                       const SizedBox(
-                        height: 5,
+                        height: 25,
                       ),
-                      Text(dato["respuesta_escogida"] as String),
+                      Text(
+                        dato["pregunta"] as String,
+                        style: GoogleFonts.catamaran(
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(192, 255, 255, 255),
+                          fontSize: 15,
+                        ),
+                      ),
                       const SizedBox(
-                        height: 5,
+                        height: 1,
                       ),
-                      Text(dato["respuesta_correcta"] as String),
+                      Text(
+                        dato["respuesta_escogida"] as String,
+                        style: GoogleFonts.catamaran(
+                          color: const Color.fromARGB(132, 255, 255, 255),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 1,
+                      ),
+                      Text(
+                        dato["respuesta_correcta"] as String,
+                        style: GoogleFonts.catamaran(
+                          color: const Color.fromARGB(158, 6, 52, 255),
+                          fontWeight: FontWeight.w800,
+                          fontSize: 13,
+                        ),
+                      ),
                     ],
                   ),
                 ),

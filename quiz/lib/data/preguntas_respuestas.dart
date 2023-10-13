@@ -20,4 +20,11 @@ const preguntas = [
     "Ignorar los cambios de informacion",
     "Renderizar IU que no depende de informacion",
   ]),
+  PreguntaQuiz(
+      "Que deberias utilizar mas seguido: StatelessWidget o StatefulWidget?", [
+    "StatelessWidget",
+    "StatefulWidget",
+    "Ninguno de los dos",
+    "Ambos",
+  ]),
 ];
