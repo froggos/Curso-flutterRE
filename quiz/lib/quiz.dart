@@ -39,6 +39,13 @@ class _QuizEstado extends State<Quiz> {
     }
   }
 
+  void reiniciarQuiz() {
+    setState(() {
+      respuestasElegidas = [];
+      pantallaActiva = "preguntas-pantalla";
+    });
+  }
+
   @override
   Widget build(context) {
     Widget pantallaWidget = Inicio(cambiarPantalla);
@@ -52,6 +59,7 @@ class _QuizEstado extends State<Quiz> {
     if (pantallaActiva == "resultados-pantalla") {
       pantallaWidget = Resultados(
         respuestasEscogidas: respuestasElegidas,
+        reiniciarQuiz: reiniciarQuiz,
       );
     }
 

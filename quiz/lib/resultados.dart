@@ -5,8 +5,12 @@ import 'package:quiz/resumen_preguntas.dart';
 
 class Resultados extends StatelessWidget {
   final List<String> respuestasEscogidas;
+  final void Function() reiniciarQuiz;
 
-  const Resultados({super.key, required this.respuestasEscogidas});
+  const Resultados(
+      {super.key,
+      required this.respuestasEscogidas,
+      required this.reiniciarQuiz});
 
   List<Map<String, Object>> obtenerResumenDatos() {
     final List<Map<String, Object>> resumen = [];
@@ -59,7 +63,7 @@ class Resultados extends StatelessWidget {
                 weight: 20,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: reiniciarQuiz,
               label: Text(
                 "Reiniciar quiz",
                 style: GoogleFonts.catamaran(
